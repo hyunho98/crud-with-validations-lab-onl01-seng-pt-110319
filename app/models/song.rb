@@ -7,5 +7,5 @@ class Song < ApplicationRecord
 
   private
 
-  
+
 end
