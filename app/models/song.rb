@@ -1,19 +1,11 @@
 class Song < ApplicationRecord
-  validates :title, presence: true
-  validates :repeat_title
+  validates :title, presence: true, uniqueness: {scope: %i[release_year artist_name]}
   validates :released, inclusion: {in: [true, false]}
   validates :release_year, presence: true, if: :is_released?
-  validates :release_year, :not_in_the_future
+  validates :release_year, numericality: {less_than_or_equal_to: Date.year}
   validates :artist_name, presence: true
 
   private
 
-  def repeat_title
-    songs = Song.find_by(title: title)
-    songs.each do |song|
-      if song.artist == artist && song.release_year == release_year
-        errors.add(:title, "song already exists")
-      end
-    end
-  end
+  
 end
