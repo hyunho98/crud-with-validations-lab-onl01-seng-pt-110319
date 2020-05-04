@@ -11,4 +11,13 @@
     <% end %>
     </ul>
   </div>
-<% end>
+<% end %>
+
+<%= form_for @song do |f| %>
+  <%= f.label 'Title' %>
+  <%= f.text_field :title %>
+
+  <%= f.label 'Released' %>
+  <%= f.check_box :released %>
+
+  <%= f.label 
