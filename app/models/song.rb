@@ -7,5 +7,8 @@ class Song < ApplicationRecord
 
   private
 
+  def is_released?
+    released
+  end
 
 end
